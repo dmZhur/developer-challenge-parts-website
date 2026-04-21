@@ -1,0 +1,10 @@
+<template>
+  <div class="flex min-h-screen flex-col bg-gray-50">
+    <AppHeader />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <AppFooter />
+    <QuoteDrawer />
+  </div>
+</template>

@@ -1,0 +1,33 @@
+{
+  "name": "parts-finder",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev --open",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "@nuxt/eslint": "^1.15.2",
+    "@nuxt/test-utils": "^3.17.0",
+    "@tailwindcss/vite": "^4.1.4",
+    "@vue/test-utils": "^2.4.6",
+    "eslint": "^9.39.4",
+    "eslint-config-prettier": "^10.1.8",
+    "happy-dom": "^20.9.0",
+    "nuxt": "^4.0.0",
+    "prettier": "^3.8.3",
+    "tailwindcss": "^4.1.4",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.2"
+  }
+}

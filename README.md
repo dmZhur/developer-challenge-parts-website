@@ -1,85 +1,104 @@
-# Parts Finder — Technical Assignment
+# Parts Finder
 
-## Goal
+A B2B parts catalogue SPA for browsing, filtering, and quoting heavy-truck components.
 
-Build a mini **Parts Finder** application that allows a mechanic or workshop to quickly locate the right part and compile a quote list — modelled after a B2B workflow rather than a traditional e-commerce checkout.
-
----
-
-## Required Stack
-
-- **Nuxt 4** + **Vue 3**
-- **Tailwind CSS**
-- Fully **responsive** layout
-- **Testing** included
+Built with **Nuxt 4**, **Vue 3**, **TypeScript**, and **Tailwind CSS v4**.
 
 ---
 
-## Functional Scope
+## Tech Stack
 
-### 1. Overview Page
-
-Display a list or grid of **part cards** based on data fetched from a mock API.
-
-Each card must show at minimum:
-
-- Name
-- OEM number
-- Brand
-- Condition
-- Price
-- Stock indicator
+| Layer | Technology |
+|---|---|
+| Framework | Nuxt 4 (Vue 3, `<script setup>`) |
+| Styling | Tailwind CSS v4 (Vite plugin) |
+| Language | TypeScript |
+| Testing | Vitest + @nuxt/test-utils + happy-dom |
+| Linting | ESLint 9 flat config + eslint-config-prettier |
+| Formatting | Prettier |
 
 ---
 
-### 2. Search, Filter & Sort
+## Features
 
-- **Search:** match on part name or OEM number
-- **Filters:** brand (single or multi-select) and condition
-- **Sorting:** price high → low / low → high
-
----
-
-### 3. Detail Page
-
-- Extended part information with a larger image (placeholder is fine)
-- **Add to Quote** button
+- Browse and search a catalogue of truck parts
+- Filter by category, brand, condition, and stock availability
+- Sort by name or price
+- Part detail page with specifications and colour selection
+- Quote drawer — add parts with quantity and selected colour
+- Fully reactive state via Vue composables
 
 ---
 
-### 4. Quote List
+## Prerequisites
 
-- Quote list visible as a sidebar / mini drawer, or as a separate route
-- Ability to remove individual items
-- **Bonus:** persist the quote list in `localStorage`
+- **Node.js** ≥ 18 (developed on v22)
+- **npm** ≥ 9
 
 ---
 
-## Mock Data
+## Getting Started
 
-Use the following structure as your mock data:
+### 1. Install dependencies
 
-```json
-{
-  "id": "2119711",
-  "name": "DAF XF 106 Sideskirt set",
-  "oem": "2119711",
-  "brand": "DAF",
-  "condition": "used",
-  "price": 795,
-  "inStock": true,
-  "category": "Body",
-  "image": "/img/placeholder-part.png"
-}
+```bash
+npm install
+```
+
+### 2. Start the development server
+
+```bash
+npm run dev
+```
+
+The app will be available at **http://localhost:3000**.
+
+---
+
+## Available Scripts
+
+| Script | Description |
+|---|---|
+| `npm run dev` | Start development server with HMR |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview the production build locally |
+| `npm run test` | Run tests in watch mode |
+| `npm run test:run` | Run tests once |
+| `npm run test:coverage` | Run tests with coverage report |
+| `npm run lint` | Lint with ESLint |
+| `npm run lint:fix` | Lint and auto-fix |
+| `npm run format` | Format all files with Prettier |
+| `npm run format:check` | Check formatting without writing |
+
+---
+
+## Project Structure
+
+```
+app/
+├── components/
+│   ├── common/        # AppBadge, AppButton, AppInput
+│   ├── layout/        # AppHeader, AppFooter
+│   ├── parts/         # PartCard, PartFilters, PartSortSelect
+│   └── quote/         # QuoteDrawer, QuoteItem
+├── composables/       # usePartsFinder, useQuote
+├── pages/             # / (catalogue), /parts/[id] (detail)
+├── types/             # Shared TypeScript interfaces
+└── utils/             # filterParts, colorSwatch
+server/
+├── api/               # GET /api/parts, GET /api/parts/:id
+└── data/              # Mock parts dataset (36 parts)
+tests/
+├── components/        # PartCard, PartSortSelect component tests
+├── composables/       # useQuote composable tests
+└── utils/             # filterParts unit tests
 ```
 
 ---
 
-## Nice to Have
+## API Routes
 
-- End-to-end (E2E) tests
-- **"Available in colour"** badge on applicable parts
-- Simple colour dropdown on the detail page that visually reflects the selected colour in the UI
-- A **surprising element** of your own choosing — something not specified in the requirements that shows initiative
-
----
+| Method | Path | Description |
+|---|---|---|
+| `GET` | `/api/parts` | Returns all parts |
+| `GET` | `/api/parts/:id` | Returns a single part by ID |
